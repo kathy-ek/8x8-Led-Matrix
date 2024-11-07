@@ -1,0 +1,582 @@
+PPOUTL:	        EQU	00H		;74LS373 (write)
+PPOUTS1: 	EQU	02H		;74LS373 (selection)
+PPOUTS2: 	EQU	04H		;74LS373 (selection)
+PPOUTS3: 	EQU	06H		;74LS373 (selection)
+PPOUTS4: 	EQU	08H		;74LS373 (selection)
+PPOUTS5: 	EQU	0AH		;74LS373 (selection)
+PPOUTS6: 	EQU	0CH		;74LS373 (selection)
+PPOUTS7: 	EQU	0EH		;74LS373 (selection)
+PPOUTS8: 	EQU	10H		;74LS373 (selection)
+PPOUTS9: 	EQU	12H		;74LS373 (selection)
+PPOUTS10: 	EQU	14H		;74LS373 (selection)
+PPOUTS11: 	EQU	16H		;74LS373 (selection)
+PPOUTS12: 	EQU	18H		;74LS373 (selection)
+PPOUTS13: 	EQU	1AH		;74LS373 (selection)
+PPOUTS14: 	EQU	1CH		;74LS373 (selection)
+PPOUTS15: 	EQU	1EH		;74LS373 (selection)
+PPOUTS16: 	EQU	20H		;74LS373 (selection)
+
+DELTIME      EQU 038FH    ;0.04ms
+
+DELTIMESHIFT EQU E3DDH    ;0.025s
+
+
+	ORIGIN 0050:0050H
+COL1:	DB FF;0 
+        DB 00;1
+        DB 9F;2
+        DB 91;3
+        DB F0;4
+        DB F1;5
+        DB FF;6
+        DB 80;7
+        DB FF;8
+        DB F1;9
+        DB FF;A
+        DB FF;b
+        DB FF;C
+        DB 0F;d
+        DB FF;E
+        DB FF;F
+        DB 10;-
+        DB 00;:
+	ORIGIN 0050:0150H
+COL2:	DB 81;0
+        DB 00;1
+        DB 91;2
+        DB 91;3
+        DB 10;4
+        DB 91;5
+        DB 89;6
+        DB 80;7
+        DB 89;8
+        DB 91;9
+        DB 90;A
+        DB 09;b
+        DB 81;C
+        DB 09;d
+        DB 9A;E
+        DB 90;F
+        DB 10;-
+        DB 00;:
+	ORIGIN 0050:01D0H
+COL3:	DB 81;0
+        DB 00;1
+        DB 91;2
+        DB 91;3
+        DB 10;4
+        DB 91;5
+        DB 89;6
+        DB 80;7
+        DB 89;8
+        DB 91;9
+        DB 90;A
+        DB 09;b
+        DB 81;C
+        DB 09;d
+        DB 91;E
+        DB 90;F
+        DB 10;-
+        DB 18;:
+	ORIGIN 0050:0250H
+COL4:	DB FF;0
+        DB FF;1
+        DB F1;2
+        DB FF;3
+        DB FF;4
+        DB 9F;5
+        DB 8F;6		
+        DB FF;7
+        DB FF;8
+        DB FF;9
+        DB FF;A
+        DB 0F;b
+        DB 81;C
+        DB FF;d
+        DB 91;E
+        DB 90;F
+        DB 10;-
+        DB 00;:
+COL5:   ORIGIN 0050:0350
+        DB 00;0
+        DB 00;1
+        DB 00;2
+        DB 00;3
+        DB 00;4
+        DB 00;5
+        DB 00;6		
+        DB 00;7
+        DB 00;8
+        DB 00;9
+        DB 00;A
+        DB 00;b
+        DB 00;C
+        DB 00;d
+        DB 00;E
+        DB 00;F
+        DB 00;-
+        DB 00;:
+
+DIGIT:	DB G; ADDRESS 0450
+        DB O;
+        DB O;
+        DB D;
+        DB ;
+        DB M;
+        DB O;
+        DB R;
+        DB N;
+        DB I;
+        DB N;
+        DB G;
+
+
+	ORIGIN 0050H:0400H 
+	DB 00; BUFFER MEMORY
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+        DB 00;
+
+	ORIGIN 0050H:0900H
+START:	MOV BX,0050H;BX POINT TO START OF TABLE
+	MOV AH,00H;HIGH BYTE = 0
+	MOV DH,00H;
+        MOV CH,00H;
+        MOV CL,00H;
+        
+LOOP1:	MOV AL,[0450+CH];STORE THE VALUE OF ASCII CODE IN AL
+        MOV SI,AX;AH+AL=AX (16 BITS)
+        MOV AL,[BX+SI];
+        MOV [0480+DH],AL;
+        ADD BX,0100H; GO TO THE FOLLOWING LOOK UP TABLE
+        INC DH;
+        INC CL;
+        CMP CL,04H; CHECK IF ALL LOOK UP TABLES ARE PASSED BY
+        JLE LOOP1; REPEAT AS LONG AS THERE ARE REMAINING LOOK UP TABLES
+        INC CH;
+        CMP CH,0CH; CHECK IF THERE ARE REMAINING CHARACTERS (12 CHARACTER IN GOOD MORINING)
+        JLE LOOP1; REPEAT AS LONG AS THERE ARE REMAINING CHARACTERS
+        MOV CX,0000H;RETURN CX=0
+        CALL OUTPUT;
+
+
+OUTPUT: MOV DH,00H;
+        MOV AH,00H;
+        CALL OUTER;
+        CALL DELAYSHIFT;DELAY BETWEEN EACH FULL DISPLAY
+        INC CX;
+        CMP CX,0100H; COMPARE CX TO 256
+        JLE OUTPUT;
+        JMP START;
+        
+
+OUTER:	MOV DL,7FH;TO SELECT COLUMNS (ANODE COMMUNE)
+        CALL DISPLAY;
+        ADD AH,02H;TO GO THE THE FOLLOWING LATCH
+	CMP DH, 80H; COMPARE TO SIZE OF THE MATRIX
+	JLE OUTER;
+
+DISPLAY:MOV AL,[0400+DH+CX]; POINTER TO START OF BUFFER MEMORY + DH + COUNTER (INSIDE OUTPUT)
+        OUT PPOUTL, AL; WRITE
+	MOV AL, DL; DL CONTAINS SELECTED COLUMN
+        OUT [AH+02H],AL;PUT AL IN THE LATCH
+	CALL DELAY;
+        INC DH;
+	SHR DL; SECOND COLUMN
+	CMP DL,FEH; COMPARE DL TO 1111 1110
+	JLE DISPLAY; REPEAT AS LONG AS WE ARE IN SAME LATCH/ WHEN ALL OUTPUT DISPLAYED CONTINUE OUTER
+         
+
+
+DELAY: PUSH	CX;SAVE REGS
+	MOV	CX,DELTIME;SET DELAY COUNTER
+DELAYSHIFT:     PUSH	CX;SAVE REGS
+                MOV	CX,DELTIMESHUFT;SET DELAY COUNTER
+NEXT:	LOOP	NEXT;COUNT = COUNT-1, LOOP IF NOT 0
+	POP	CX;RESTORE REG
+	RET
+
+		END
+		
+
+
+
